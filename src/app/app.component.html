@@ -1,0 +1,106 @@
+<!-- <div class="container">
+  <div class="upperPart">
+    <img src="../assets/ColdImage.jpg" *ngIf="14 > 15" />
+    <img src="../assets/hotImage.jpg" *ngIf="14 <= 15" />
+    <div class="weatherData">
+      <div class="location">wellington</div>
+      <div class="temperature">{{ 14.4 |number: '1.0-0' }}°C</div>
+    </div>
+  </div>
+  <div class="lowerPart">
+    <div class="moreInforLabel">
+      More Information
+    </div>
+    <div class="moreInforContainer">
+      <div class="infoBlock">
+        <div class="infoBlockLabel">
+          <img src="../assets/min.png" alt="" class="">
+          <span class="">min</span>
+        </div>
+        <div class="infoBlockValue">
+          10°C
+        </div>
+      </div>
+      <div class="infoBlock">
+        <div class="infoBlockLabel">
+          <img src="../assets/max.png" alt="" class="">
+          <span class="">max</span>
+        </div>
+        <div class="infoBlockValue">
+          20°C
+        </div>
+      </div>
+      <div class="infoBlock">
+        <div class="infoBlockLabel">
+          <img src="../assets/humidity.png" alt="" class="">
+          <span class="">humidity</span>
+        </div>
+        <div class="infoBlockValue">77%</div>
+      </div>
+      <div class="infoBlock">
+        <div class="infoBlockLabel">
+          <img src="../assets/wind.png" alt="" class="">
+          <span class="">Wind</span>
+        </div>
+        <div class="infoBlockValue">11km/hr</div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()">
+    <input type="text" placeholder="Search City" name="city" [(ngModel)]="cityName" >
+  </form>
+</div>
+<div class="container" *ngIf="weatherData">
+  <div class="upperPart">
+    <img src="../assets/ColdImage.jpg" *ngIf="weatherData.main.temp > 15" />
+    <img src="../assets/hotImage.jpg" *ngIf="weatherData.main.temp <= 15" />
+    <div class="weatherData">
+      <div class="location">{{weatherData.name}}</div>
+      <div class="temperature">{{ weatherData.main.temp |number: '1.0-0' }}°C</div>
+    </div>
+  </div>
+  <div class="lowerPart">
+    <div class="moreInforLabel">
+      More Information
+    </div>
+    <div class="moreInforContainer">
+      <div class="infoBlock">
+        <div class="infoBlockLabel">
+          <img src="../assets/min.png" alt="" class="">
+          <span class="">min</span>
+        </div>
+        <div class="infoBlockValue">
+          {{weatherData.main.temp_min | number: '1.0-0'}}°C
+        </div>
+      </div>
+      <div class="infoBlock">
+        <div class="infoBlockLabel">
+          <img src="../assets/max.png" alt="" class="">
+          <span class="">max</span>
+        </div>
+        <div class="infoBlockValue">
+          {{weatherData.main.temp_max | number: '1.0-0'}}°C
+        </div>
+      </div>
+      <div class="infoBlock">
+        <div class="infoBlockLabel">
+          <img src="../assets/humidity.png" alt="" class="">
+          <span class="">humidity</span>
+        </div>
+        <div class="infoBlockValue">{{weatherData.main.humidity}}%</div>
+      </div>
+      <div class="infoBlock">
+        <div class="infoBlockLabel">
+          <img src="../assets/wind.png" alt="" class="">
+          <span class="">Wind</span>
+        </div>
+        <div class="infoBlockValue">{{weatherData.wind.speed}}km/hr</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
